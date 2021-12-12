@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:form="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -73,36 +73,43 @@
                         <tr th:each="food : ${foodsList}">
                             <td><span th:text="${food.foodName}"> FoodName </span></td>
                             <td><span th:text="${food.foodCost}"> FoodCost </span></td>
-<!--                            <td><span th:text="${order.author}"> Author </span></td>-->
+                            <!--                            <td><span th:text="${order.author}"> Author </span></td>-->
                         </tr>
 
-<!--                        <tr th:each="order : ${ordersList}">-->
-<!--&lt;!&ndash;                            <td th:text="${order.departmentName}">CEO</td>&ndash;&gt;-->
-<!--                            <td th:text="${order}"></td>-->
-<!--                            <td class="text-end">-->
+                        <!--                        <tr th:each="order : ${ordersList}">-->
+                        <!--&lt;!&ndash;                            <td th:text="${order.departmentName}">CEO</td>&ndash;&gt;-->
+                        <!--                            <td th:text="${order}"></td>-->
+                        <!--                            <td class="text-end">-->
 
-<!--                                <a href="department.html"-->
-<!--                                   th:href="@{|/department/${department.departmentId}|}"-->
-<!--                                   class="btn-sm btn-outline-secondary"-->
-<!--                                   title="Edit department">-->
-<!--                                    <i class="bi-pen"></i><span class="d-none d-md-inline">&nbsp;Edit</span></a>-->
+                        <!--                                <a href="department.html"-->
+                        <!--                                   th:href="@{|/department/${department.departmentId}|}"-->
+                        <!--                                   class="btn-sm btn-outline-secondary"-->
+                        <!--                                   title="Edit department">-->
+                        <!--                                    <i class="bi-pen"></i><span class="d-none d-md-inline">&nbsp;Edit</span></a>-->
 
-<!--                                <span data-bs-toggle="modal" data-bs-target="#deleteDialog"-->
-<!--                                      th:attr="data-id=${department.departmentId},data-name=${department.departmentName}">-->
-<!--                                    <a href="#" class="btn-sm btn-outline-secondary"-->
-<!--                                       title="delete department"><i class="bi-x"></i><span-->
-<!--                                            class="d-none d-md-inline">&nbsp;Delete</span>-->
-<!--                                    </a>-->
-<!--                                </span>-->
+                        <!--                                <span data-bs-toggle="modal" data-bs-target="#deleteDialog"-->
+                        <!--                                      th:attr="data-id=${department.departmentId},data-name=${department.departmentName}">-->
+                        <!--                                    <a href="#" class="btn-sm btn-outline-secondary"-->
+                        <!--                                       title="delete department"><i class="bi-x"></i><span-->
+                        <!--                                            class="d-none d-md-inline">&nbsp;Delete</span>-->
+                        <!--                                    </a>-->
+                        <!--                                </span>-->
 
-<!--                            </td>-->
-<!--                        </tr>-->
-
+                        <!--                            </td>-->
+                        <!--                        </tr>-->
 
 
                         </tbody>
                     </table>
                 </div>
+                <form action="#" th:action="@{/addFood}" th:object="${food}" method="post">
+                    <div class="input-group mb-3">
+                        <input type="text" class="form-control" placeholder="Recipient's username_TYPE_HERE"
+                               aria-label="Recipient's username" aria-describedby="button-addon2">
+                        <button class="btn btn-outline-secondary" type="button" id="button-addon2">Button</button>
+                    </div>
+                </form>
+
             </div>
         </div>
     </div>
@@ -143,6 +150,10 @@
         $(this).find('.modal-body').text('Please confirm delete department: "' + target.data('name') + '"')
         document.getElementById('deleteUrl').href = '/department/' + target.data('id') + '/delete';
     })
+
+
+
+
 </script>
 </body>
 </html>
